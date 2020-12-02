@@ -275,9 +275,47 @@ class modelo{
 		return $this->objeto;
 	}
 
+	/* --------------- OPERACIONES CON ASISTENCIAS (ADMIN) ----------------- */
 
 
-	
+	//muestra todas las asistencias
+	public function getAsistencias(){
+		$sql = " SELECT * FROM asistencia ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	//Busca asistencias
+	public function buscarAsistencia($buscar){
+		$sql = " SELECT * FROM asistencia WHERE id LIKE '%".$buscar."%' OR tipo LIKE UPPER('%".$buscar."%') OR nombre LIKE UPPER('%".$buscar."%') OR apellidos LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
+
+
+	/* --------------- OPERACIONES CON ASISTENCIAS (DOCENTES) ----------------- */
+	//Inserta una asistencia
+	public function insertarAsistencia($nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon){
+		$sql = " INSERT INTO asistencia (nombre, apellidos, hora, tipo, fecha, grupo,salon) VALUES ('$nombre' , '$apellidos' , '$hora' , '$tipo' , '$fecha' , '$grupo' , '$salon' ) ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraRegistros");
+			
+	}
+
+
+
 
 }
 

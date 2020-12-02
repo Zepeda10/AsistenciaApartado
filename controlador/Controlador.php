@@ -340,6 +340,56 @@ class Controlador{
 		require_once "vista/admin/adm_apartados.php";
 	}
 
+	/* --------------- MODELO Y VISTA DE ASISTENCIAS (ADMIN) ----------------- */
+
+	public function muestraAsistencias(){
+		$objeto = new modelo();
+		$data["titulo"] = "Asistencias";
+		$data["objeto"] = $objeto->getAsistencias();
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/asistencias.php";
+	}
+
+	//Llamando método para buscar proveedor
+	public function buscaAsistencia(){
+		$buscar = $_POST['buscarAsistencia'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarAsistencia($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/asistencias.php";
+	}
+
+
+
+	/* --------------- MODELO Y VISTA DE ASISTENCIAS (DOCENTES) ----------------- */
+
+	public function muestraRegistros(){ //Muestra el formulario inicio del docente
+		$objeto = new modelo();
+		$data["titulo"] = "Asistencias";
+
+		//mandando información del modelo a la vista
+		require_once "vista/registro.php";
+	}
+
+	//Pasando valores a método insertarAsistencia del modelo, para agregarlos en la vista de "agregarAsistencia"
+	public function guardarAsistencia(){ //docente
+		$nombre = $_POST['nombre'];
+		$apellidos = $_POST['apellidos'];
+		$hora = $_POST['hora'];
+		$tipo = $_POST['tipo'];
+		$fecha = $_POST['fecha'];
+		$grupo = $_POST['grupo'];
+		$salon = $_POST['salon'];
+
+		$objeto = new modelo();
+		$objeto->insertarAsistencia($nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon);
+
+		$data["titulo"] = "Agregar Asistencia";
+			
+	}
+
 
 
 
