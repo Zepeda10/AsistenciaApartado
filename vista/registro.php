@@ -1,3 +1,11 @@
+<?php 
+
+    if($_SESSION['tipo']!="Usuario"){
+        header("Location: index.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +55,6 @@
     </fieldset>
 
     <input class="#" type="submit" value="Registrar" name="registrarAsistencia">
-    <a class="#" href="#">Regresar (pendiente)</a>
     
 </form>
 	

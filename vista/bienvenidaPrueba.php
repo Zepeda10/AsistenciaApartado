@@ -1,3 +1,12 @@
+<?php 
+
+    if($_SESSION['tipo']!="Admin"){
+        header("Location: index.php");
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +17,7 @@
 </head>
 <body>
 
-	<h2>Esta es la página PRINCIPAL de todos los usuarios, solo es una prueba</h2>
+	<h2>Esta es la página PRINCIPAL de todos los usuarios (ADMIN), solo es una prueba</h2>
 
 	<a href="principal.php?c=controlador&a=muestraDocentes">Docentes</a>
 	<a href="principal.php?c=controlador&a=muestraGrupos">Grupos</a>

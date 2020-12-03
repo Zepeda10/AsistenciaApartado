@@ -1,3 +1,11 @@
+<?php 
+
+    if($_SESSION['tipo']!="Admin"){
+        header("Location: index.php");
+    }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
