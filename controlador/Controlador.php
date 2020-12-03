@@ -375,6 +375,7 @@ class Controlador{
 
 	//Pasando valores a método insertarAsistencia del modelo, para agregarlos en la vista de "agregarAsistencia"
 	public function guardarAsistencia(){ //docente
+		$id = $_POST['id_docente'];
 		$nombre = $_POST['nombre'];
 		$apellidos = $_POST['apellidos'];
 		$hora = $_POST['hora'];
@@ -384,7 +385,7 @@ class Controlador{
 		$salon = $_POST['salon'];
 
 		$objeto = new modelo();
-		$objeto->insertarAsistencia($nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon);
+		$objeto->insertarAsistencia($id,$nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon);
 
 		$data["titulo"] = "Agregar Asistencia";
 			

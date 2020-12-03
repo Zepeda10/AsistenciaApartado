@@ -21,7 +21,9 @@
 
     <fieldset>
         <legend>Asistencia</legend>
-        <input type="hidden" name="id" value="">
+         <input type="hidden" name="id" value="">
+        <label for="nombre">Id Docente</label>
+        <input type="text" name="id_docente" placeholder="Id Docente" required="">
 
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" placeholder="Nombre" required>

@@ -305,8 +305,8 @@ class modelo{
 
 	/* --------------- OPERACIONES CON ASISTENCIAS (DOCENTES) ----------------- */
 	//Inserta una asistencia
-	public function insertarAsistencia($nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon){
-		$sql = " INSERT INTO asistencia (nombre, apellidos, hora, tipo, fecha, grupo,salon) VALUES ('$nombre' , '$apellidos' , '$hora' , '$tipo' , '$fecha' , '$grupo' , '$salon' ) ";
+	public function insertarAsistencia($idDocente,$nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon){
+		$sql = " INSERT INTO asistencia (id_docente, nombre, apellidos, hora, tipo, fecha, grupo, salon) VALUES ('$idDocente' , '$nombre' , '$apellidos' , '$hora' , '$tipo' , '$fecha' , '$grupo' , '$salon' ) ";
 
 		$resultado = $this->db->query($sql);		
 			
