@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +7,7 @@
 	<link rel="stylesheet" href="">
 </head>
 <body>
+    <a href="CierraSesion.php">Cerrar Sesión</a>
 
 	<form action="principal.php?c=controlador&a=guardarAsistencia" method="POST" id="frmRegAsis" name="frmRegAsis" accept-charset="utf-8">
 

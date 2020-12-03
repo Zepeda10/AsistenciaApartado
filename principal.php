@@ -7,7 +7,7 @@
 	require_once "controlador/Controlador.php";
 
 
-
+	//EVITA PODER ENTRAR A CUALQUIER PÁGINA SIN LOGEARSE
     session_start();//reanudando sesión
 
     if(!isset($_SESSION['user'])){

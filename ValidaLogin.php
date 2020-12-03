@@ -29,14 +29,25 @@
 
 			$resultado->execute();
 
+			$row = $resultado->fetch(PDO::FETCH_NUM);
+
 			$numRegistro = $resultado->rowCount();//Cuenta cuántas filas generó la consulta, si existe el usuario, devilverá 1 fila, sino, 0.
 			if($numRegistro!=0){
 
 				session_start();//iniciando sesión
 
+				$tipo = $row[1];
+				$_SESSION['tipo'] = $tipo;
+
+				if($_SESSION['tipo'] == "Admin"){
+					header("Location: principal.php");
+				}else if ($_SESSION['tipo'] == "Usuario"){
+					header("Location: principal.php?c=controlador&a=muestraRegistros");
+				}
+
 				$_SESSION["user"]=$_POST['apodo'];//se almacena el nombre del usuario en la variable super global "$_SESSION['user']"
 
-				header("Location: principal.php");
+				
 			}else{
 				header("Location: index.php");
 			}

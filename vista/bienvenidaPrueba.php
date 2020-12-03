@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +15,6 @@
 	<a href="principal.php?c=controlador&a=muestraSalones">Salones</a>
 	<a href="principal.php?c=controlador&a=muestraUsuarios">Usuarios</a>
 	<a href="principal.php?c=controlador&a=muestraApartados">Apartados</a>
-	<a href="principal.php?c=controlador&a=muestraRegistros">Registrar Asistencia (docentes)</a>
 	<a href="principal.php?c=controlador&a=muestraAsistencias">Asistencias</a>
 	<a href="CierraSesion.php">Cerrar Sesión</a>
 	
