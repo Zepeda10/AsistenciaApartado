@@ -6,6 +6,17 @@
 	require_once "db/conexion.php";
 	require_once "controlador/Controlador.php";
 
+
+
+    session_start();//reanudando sesión
+
+    if(!isset($_SESSION['user'])){
+        header("Location: index.php");
+    }
+
+
+
+
 	/*
 	Valdando si existe el controlador y la acción en la URL, para hacerla dinámica, el controlador solo es uno, "VehiculosControlador", y las acciones son las que están en el controlador: index, nuevo, etc.
 	*/
