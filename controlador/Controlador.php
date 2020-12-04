@@ -10,7 +10,7 @@ class Controlador{
 
 	public function principal(){
 		$objeto = new modelo();
-		$data["titulo"] = "Docentes";
+		$data["titulo"] = "Inicio";
 		$data["objeto"] = $objeto->getDocentes();
 
 		//mandando información del modelo a la vista
@@ -267,7 +267,7 @@ class Controlador{
 	//mostrando vista de docentes (html) creada en carpeta "vista", haciendo interactuar modelo con vista
 	public function muestraApartados(){
 		$objeto = new modelo();
-		$data["titulo"] = "Docentes";
+		$data["titulo"] = "Apartar Aulas";
 		$data["objeto"] = $objeto->getApartados();
 
 		//mandando información del modelo a la vista

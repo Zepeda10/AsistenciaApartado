@@ -6,15 +6,11 @@
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
+ <?php 
+    require_once "HeaderPrueba.php";
+ ?>
+
+  <div class="container">
 
 	<form action="principal.php?c=controlador&a=actualizaUsuario" method="POST" id="frmModUsu" name="frmModUsu" accept-charset="utf-8">
 
@@ -36,10 +32,12 @@
 
     </fieldset>
 
-    <input class="#" type="submit" value="Agregar" name="modifUsuario">
+    <input class="#" type="submit" value="Modificar" name="modifUsuario">
     <a class="#" href="principal.php?c=controlador&a=muestraUsuarios">Regresar</a>
     
 </form> 
+</div>
 	
-</body>
-</html>
+ <?php 
+    require_once "FooterPrueba.php";
+ ?>

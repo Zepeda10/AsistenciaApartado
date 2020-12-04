@@ -240,7 +240,7 @@ class modelo{
 
 	//Modificar un docente
 	public function modificarApartado($id,$idSalon,$idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente){
-		$sql = " UPDATE apartados SET id_salon = '$idSalon' , id_docente = '$idDocente' , nombre_salon = '$nombreSalon' , hora_inicio = '$inicio' , hora_fin = '$fin' ,  nombre_docente = '$nomDocente' apellido_docente = '$apeDocente' WHERE id = '$id' ";
+		$sql = " UPDATE apartados SET id_salon = '$idSalon' , id_docente = '$idDocente' , nombre_salon = '$nombreSalon' , hora_inicio = '$inicio' , hora_fin = '$fin' ,  nombre_docente = '$nomDocente' , apellido_docente = '$apeDocente' WHERE id = '$id' ";
 
 		$resultado = $this->db->query($sql);		
 			

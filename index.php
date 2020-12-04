@@ -4,28 +4,28 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="css/style-login.css">
 </head>
 <body>
 
-	<form action="ValidaLogin.php" method="POST" id="frmRegAsis" name="frmRegAsis" accept-charset="utf-8">
+    <div class="login-box">
 
-    <fieldset>
-        <legend>Iniciar Sesión</legend>
-        <input type="hidden" name="id" value="">
+        <img class="avatar" src="img/user5.jpg" alt="Logo Usuario">
+        <h1>Iniciar Sesión</h1>
 
-        <label for="apodo">Usuario</label>
-        <input type="text" name="apodo" placeholder="Nombre" required>
+    	<form action="ValidaLogin.php" method="POST" id="frmRegAsis" name="frmRegAsis" autocomplete="off" accept-charset="utf-8">
 
-        <label for="pass">Contraseña</label>
-        <input type="text" name="pass" placeholder="Contraseña" required>
+            <input type="hidden" name="id" value="">
+            <label for="apodo">Usuario</label>
+            <input type="text" name="apodo" placeholder="Nombre" required>
 
+            <label for="pass">Contraseña</label>
+            <input type="password" name="pass" placeholder="Contraseña" required>
 
-    </fieldset>
-
-    <input class="#" type="submit" value="Ingresar" name="iniciarSesion">
-    
-</form>
+            <input class="#" type="submit" value="Ingresar" name="iniciarSesion">
+        
+        </form>
+    </div>
 	
 </body>
 </html>

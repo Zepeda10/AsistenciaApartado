@@ -6,15 +6,11 @@
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
+ <?php 
+ 	require_once "HeaderPrueba.php";
+ ?>
+
+ <div class="container">
 
 	<form action="principal.php?c=controlador&a=buscaSalon" method="POST" accept-charset="utf-8">
 		<label for="buscar"></label>
@@ -42,7 +38,7 @@
 					echo "<td>".$dato['id']."</td>";
 					echo "<td>".$dato['nombre_salon']."</td>";
 			
-					echo "<td><a href='principal.php?c=controlador&a=borraSalon&id=".$dato['id']."'>Eliminar</a></td>";
+					echo "<td><a href='principal.php?c=controlador&a=borraSalon&id=".$dato['id']."' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i> </a></td>";
 					
 					echo "</tr>";
 				}
@@ -51,6 +47,8 @@
 
 			</tbody>
 		</table>
+	</div>
 	
-</body>
-</html>
+ <?php 
+ 	require_once "FooterPrueba.php";
+ ?>

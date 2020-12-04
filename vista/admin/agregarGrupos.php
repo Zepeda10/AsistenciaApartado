@@ -6,15 +6,11 @@
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-</head>
-<body>
+ <?php 
+    require_once "HeaderPrueba.php";
+ ?>
+
+  <div class="container">
 
 	<form action="principal.php?c=controlador&a=guardarGrupo" method="POST" id="frmRegGrupo" name="frmRegGrupo" accept-charset="utf-8">
 
@@ -31,6 +27,8 @@
     <a class="#" href="principal.php?c=controlador&a=muestraGrupos">Regresar</a>
     
 </form>
+</div>
 	
-</body>
-</html>
+ <?php 
+    require_once "FooterPrueba.php";
+ ?>
