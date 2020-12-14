@@ -335,6 +335,27 @@ class modelo{
 	}
 
 
+	public function getNombreDocente($id){
+		$sql = "SELECT nombre,apellidos FROM empleados WHERE id = '$id' LIMIT 1 ";
+		$datos = $this->db->query($sql)->fetch();//ejecutando la consulta con la conexión establecida
+
+		//$datos->fetch();
+
+		$res['existe'] = false;
+		$res['error'] = '';
+		$res['datos'] = '';
+				
+		if($datos){
+			$res['datos'] = $datos;
+			$res['existe'] = true;
+		} else{
+			$res['error'] = 'No existe ese docente';
+			$res['existe'] = false;
+		}
+
+		echo json_encode($res);
+	}
+
 
 
 

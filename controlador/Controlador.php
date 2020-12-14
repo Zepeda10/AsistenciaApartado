@@ -392,6 +392,11 @@ class Controlador{
 			
 	}
 
+	public function muestraNombre($id){
+		$objeto = new modelo();
+		$objeto->getNombreDocente($id);
+	}
+
 
 
 
