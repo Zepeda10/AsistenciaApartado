@@ -6,6 +6,11 @@
 
 ?>
 
+<?php 
+    $fecha = Date("Y-m-d");
+    $hora = Date("H:i:s");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,27 +36,33 @@
         <label for="apellidos">Apellidos</label>
         <input type="text" name="apellidos" placeholder="Apellidos" required>
 
-
-
         <label for="hora">Hora</label>
-        <input type="text" name="hora" placeholder="Hora" required>
+        <input type="text" name="hora" value='<?php echo $hora; ?>' readonly="true">
 
         <label for="tipo">Tipo</label>
         <input type="text" name="tipo" placeholder="Tipo" required>
 
         <label for="fecha">Fecha</label>
-        <input type="text" name="fecha" placeholder="Fecha" required>
-
+        <input type="text" name="fecha" value='<?php echo $fecha; ?>' readonly="true">
 
 
         <label for="grupo">Grupo</label>
-        <select name="">
-        	<option value="grupo"></option>
+        <select name="grupo">
+            <?php
+               foreach ($data['objeto'] as $dato){
+                    echo "<option value='".$dato['nombre_grupo']."'>".$dato['nombre_grupo']."</option>";
+               }
+           ?>
         </select>
 
+
         <label for="salon">Salón</label>
-        <select name="">
-        	<option value="salon"></option>
+        <select name="salon">
+        	<?php
+               foreach ($data['objeto2'] as $dato){
+                    echo "<option value='".$dato['nombre_salon']."'>".$dato['nombre_salon']."</option>";
+               }
+           ?>
         </select>  
 
     </fieldset>

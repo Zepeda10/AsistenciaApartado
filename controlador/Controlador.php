@@ -368,7 +368,8 @@ class Controlador{
 	public function muestraRegistros(){ //Muestra el formulario inicio del docente
 		$objeto = new modelo();
 		$data["titulo"] = "Asistencias";
-
+		$data["objeto"] = $objeto->llenaGrupos();
+		$data["objeto2"] = $objeto->llenaSalones();
 		//mandando información del modelo a la vista
 		require_once "vista/registro.php";
 	}
@@ -390,6 +391,8 @@ class Controlador{
 		$data["titulo"] = "Agregar Asistencia";
 			
 	}
+
+
 
 
 

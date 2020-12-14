@@ -314,6 +314,27 @@ class modelo{
 			
 	}
 
+	public function llenaGrupos(){
+		$sql = " SELECT * FROM grupos ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+	public function llenaSalones(){
+		$sql = " SELECT * FROM salones ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+		return $this->objeto;
+	}
+
+
 
 
 
