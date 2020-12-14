@@ -337,17 +337,31 @@ class modelo{
 
 	public function getNombreDocente($id){
 		$sql = "SELECT nombre,apellidos FROM empleados WHERE id = '$id' LIMIT 1 ";
+		$sql2 = $this->db->query(" SELECT COUNT(*) FROM asistencia WHERE id_docente = '$id' ");
+
 		$datos = $this->db->query($sql)->fetch();//ejecutando la consulta con la conexión establecida
 
-		//$datos->fetch();
+		$num_rows = $sql2->fetchColumn();
 
 		$res['existe'] = false;
 		$res['error'] = '';
 		$res['datos'] = '';
+		$res['tipo'] = '';
+
+		$e = '';
+
+		if($num_rows%2==0){
+			 $e = 'Entrada';
+		}else{
+			$e = 'Salida';	 
+		}
+
 				
 		if($datos){
 			$res['datos'] = $datos;
 			$res['existe'] = true;
+			$res['tipo']= $e;
+			
 		} else{
 			$res['error'] = 'No existe ese docente';
 			$res['existe'] = false;

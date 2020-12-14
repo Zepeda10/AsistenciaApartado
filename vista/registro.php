@@ -31,6 +31,8 @@
         <label for="nombre">Id Docente</label>
         <input type="text" id="id_docente" name="id_docente" placeholder="Id Docente" onkeyup="buscarMaestro(event,this,this.value)" autofocus>
 
+         <label for="codigo" id="resultado_error"></label>
+
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" placeholder="Nombre" readonly="true">
 
@@ -41,7 +43,7 @@
         <input type="text" name="hora" value='<?php echo $hora; ?>' readonly="true">
 
         <label for="tipo">Tipo</label>
-        <input type="text" name="tipo" placeholder="Tipo" required>
+        <input type="text" id="tipo" name="tipo" placeholder="Tipo" readonly="true">
 
         <label for="fecha">Fecha</label>
         <input type="text" name="fecha" value='<?php echo $fecha; ?>' readonly="true">
@@ -100,12 +102,13 @@
                                     if(resultado.existe){
                                         $("#nombre").val(resultado.datos.nombre);
                                         $("#apellidos").val(resultado.datos.apellidos);
-                                        console.log("asdv");
+                                        $("#tipo").val(resultado.tipo);
 
                                     }else{
                                         $("#id_docente").val('');
                                         $("#nombre").val('');                          
                                         $("#apellidos").val('');
+                                        $("#tipo").val('');
                                         console.log("noo");
                                     }
                                 }
