@@ -229,7 +229,11 @@ class modelo{
 	}
 
 	//Inserta un docente
-	public function insertarApartado($idSalon,$idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente){
+	public function insertarApartado($idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente){
+		$sql2 = $this->db->query(" SELECT id FROM salones WHERE nombre_salon = '$nombreSalon' ");
+		$idSal = $sql2->fetch(PDO::FETCH_ASSOC);
+		$idSalon = $idSal['id'];
+
 		$sql = " INSERT INTO apartados (id_salon, id_docente, nombre_salon, hora_inicio, hora_fin, nombre_docente, apellido_docente) VALUES ( '$idSalon' , '$idDocente' , '$nombreSalon' , '$inicio' , '$fin' , '$nomDocente' , '$apeDocente' ) ";
 
 		$resultado = $this->db->query($sql);		

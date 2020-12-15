@@ -269,20 +269,20 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Apartar Aulas";
 		$data["objeto"] = $objeto->getApartados();
-
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_apartados.php";
 	}
 
-     //mostrando vista de agregar docentes
+     //mostrando vista de agregar apartado
 	public function nuevoApartado(){
+		$objeto = new modelo();
 		$data["titulo"] = "Agregar Apartados";
+		$data["objeto2"] = $objeto->llenaSalones();
 		require_once "vista/admin/agregarApartados.php";
 	}
 
-	//Pasando valores a método insertarDocente del modelo, para agregarlos en la vista de "agregarProveedor"
+	//Pasando valores a método insertarApartado del modelo, para agregarlos en la vista de "agregarApartado"
 	public function guardarApartado(){
-		$idSalon = $_POST['id_salon'];
 		$idDocente = $_POST['id_docente'];
 		$nombreSalon = $_POST['nombre_salon'];
 		$inicio = $_POST['hora_inicio'];
@@ -291,13 +291,13 @@ class Controlador{
 		$apeDocente = $_POST['apellido_docente'];
 
 		$objeto = new modelo();
-		$objeto->insertarApartado($idSalon,$idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente);
+		$objeto->insertarApartado($idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente);
 
 		$data["titulo"] = "Agregar Apartado";
 			
 	}
 
-	//Mostrando vista para modificar proveedor
+	//Mostrando vista para modificar apartado
 	public function editarApartado($id){
 		$objeto = new modelo();
 		$data["id"] = $id;
