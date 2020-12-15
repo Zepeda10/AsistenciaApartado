@@ -12,19 +12,20 @@
 
   <div class="container">
 
-	<form action="principal.php?c=controlador&a=guardarSalon" method="POST" id="frmRegSalon" name="frmRegSalon" accept-charset="utf-8">
+	<form action="principal.php?c=controlador&a=guardarSalon" method="POST" id="frmRegSalon" name="frmRegSalon" accept-charset="utf-8" class='text-dark'>
 
     <fieldset>
-        <legend>Registrar Salón</legend>
-        <input type="hidden" name="id" value="#">
+        <legend><?php echo $data["titulo"] ?></legend>
+        <input type="hidden" name="id" value="">
 
-        <label for="nombre_salon">Salón</label>
-        <input type="text" name="nombre_salon" placeholder="Salón" required>
+        <div class="col-3">
+            <input type="text" class="border border-secondary form-control" name="nombre_salon" placeholder="Salón" required>
+        </div>
 
     </fieldset>
 
-    <input class="#" type="submit" value="Agregar" name="registrarSalon">
-    <a class="#" href="principal.php?c=controlador&a=muestraGrupos">Regresar</a>
+    <input class="btn btn-danger mr-1 my-4" type="submit" value="Agregar" name="registrarSalon">
+    <a class="btn btn-outline-success mr-1 my-4" href="principal.php?c=controlador&a=muestraGrupos">Regresar</a>
     
 </form>
 </div>
