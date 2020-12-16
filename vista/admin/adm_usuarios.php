@@ -12,7 +12,7 @@
 
  <div class="container">
 
-	<form action="principal.php?c=controlador&a=buscaUsuario" method="POST" accept-charset="utf-8">
+	<form action="principal.php?c=controlador&a=buscaUsuario" method="POST" class='text-dark' accept-charset="utf-8">
 		<div class="row">
 			<label for="buscar"></label>
 			<div class="col-3">

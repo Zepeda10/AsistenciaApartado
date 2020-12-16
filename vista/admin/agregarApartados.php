@@ -9,7 +9,6 @@
  <?php 
     require_once "HeaderPrueba.php";
  ?>
-<script src="jquery/jquery-3.5.1.js"></script>
 
  <div class="container">
 

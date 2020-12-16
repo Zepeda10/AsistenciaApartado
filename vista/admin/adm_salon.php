@@ -29,7 +29,8 @@
 			<thead class="bg-primary">
 				<tr class="text-light">
 					<th class="text-center">Id </th>
-					<th class="text-center">Salón</th>			
+					<th class="text-center">Salón</th>
+					<th class="text-center">Actualizar</th>			
 					<th class="text-center">Eliminar</th>
 				</tr>
 			</thead>
@@ -41,6 +42,8 @@
 					echo "<tr class='text-dark'>";
 					echo "<td class='text-center'>".$dato['id']."</td>";
 					echo "<td class='text-center'>".$dato['nombre_salon']."</td>";
+
+					echo "<td class='text-center'><a href='principal.php?c=controlador&a=editarSalon&id=".$dato['id']."' class='btn btn-success btn-sm'><i class='fas fa-marker'></i></a></td>";
 			
 					echo "<td class='text-center'><a href='principal.php?c=controlador&a=borraSalon&id=".$dato['id']."' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i> </a></td>";
 					

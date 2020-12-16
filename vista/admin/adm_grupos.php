@@ -31,6 +31,7 @@
 				<tr class="text-light">
 					<th class="text-center">Id </th>
 					<th class="text-center">Nombre Grupo</th>
+					<th class="text-center">Actualizar</th>
 					<th class="text-center">Eliminar</th>
 				</tr>
 			</thead>
@@ -43,6 +44,8 @@
 					echo "<td class='text-center'>".$dato['id']."</td>";
 					echo "<td class='text-center'>".$dato['nombre_grupo']."</td>";
 			
+					echo "<td class='text-center'><a href='principal.php?c=controlador&a=editarGrupo&id=".$dato['id']."' class='btn btn-success btn-sm'><i class='fas fa-marker'></i></a></td>";
+
 					echo "<td class='text-center'><a href='principal.php?c=controlador&a=borraGrupo&id=".$dato['id']."' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i></a></td>";
 				
 					echo "</tr>";

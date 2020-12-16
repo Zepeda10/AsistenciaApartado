@@ -122,6 +122,24 @@ class Controlador{
 			
 	}
 
+	public function actualizaGrupo(){
+		$objeto = new modelo();
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre_grupo'];
+
+		$objeto->modificarGrupo($id,$nombre);
+	}
+
+	public function editarGrupo($id){
+		$objeto = new modelo();
+		$data["id"] = $id;
+		$data["titulo"] = "Modificar Grupo";
+		$data["objeto"] = $objeto->getGrupo($id); //llamando método que muestra un producto en el formulario
+		require_once "vista/admin/modificarGrupos.php";
+
+	}
+
+
 
 	//llamando función eliminar un proveedor
 	public function borraGrupo($id){
@@ -171,6 +189,22 @@ class Controlador{
 			
 	}
 
+	public function editarSalon($id){
+		$objeto = new modelo();
+		$data["id"] = $id;
+		$data["titulo"] = "Modificar Salón";
+		$data["objeto"] = $objeto->getSalon($id); //llamando método que muestra un producto en el formulario
+		require_once "vista/admin/modificarSalones.php";
+
+	}
+
+	public function actualizaSalon(){
+		$objeto = new modelo();
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre_salon'];
+
+		$objeto->modificarSalon($id,$nombre);
+	}
 
 	//llamando función eliminar un salones
 	public function borraSalon($id){
@@ -303,6 +337,7 @@ class Controlador{
 		$data["id"] = $id;
 		$data["titulo"] = "Modificar Apartado";
 		$data["objeto"] = $objeto->getApartado($id); //llamando método que muestra un producto en el formulario
+		$data["objeto2"] = $objeto->llenaSalones();
 		require_once "vista/admin/modificarApartados.php";
 
 	}

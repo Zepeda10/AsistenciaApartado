@@ -85,6 +85,24 @@ class modelo{
 		return $this->objeto;
 	}
 
+	public function modificarGrupo($id,$nombre){
+		$sql = " UPDATE grupos SET nombre_grupo = '$nombre' WHERE id = '$id' ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraGrupos");
+	}
+
+	public function getGrupo($id){
+		$sql = " SELECT * FROM grupos WHERE id = '$id' LIMIT 1 ";
+		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado->fetch(PDO::FETCH_ASSOC);
+				
+		return $row;
+
+	}
+
 	//Inserta un grupos
 	public function insertarGrupos($nombre){
 		$sql = " INSERT INTO grupos (nombre_grupo) VALUES ('$nombre' ) ";
@@ -124,6 +142,25 @@ class modelo{
 			$this->objeto[] = $row;//llenando array con valores de la consulta
 		}
 		return $this->objeto;
+	}
+
+	public function modificarSalon($id,$nombre){
+		$sql = " UPDATE salones SET nombre_salon = '$nombre' WHERE id = '$id' ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraSalones");
+	}
+
+
+	public function getSalon($id){
+		$sql = " SELECT * FROM salones WHERE id = '$id' LIMIT 1 ";
+		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado->fetch(PDO::FETCH_ASSOC);
+				
+		return $row;
+
 	}
 
 	//Inserta un grupos
