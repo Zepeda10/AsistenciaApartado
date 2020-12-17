@@ -319,13 +319,16 @@ class Controlador{
 	public function guardarApartado(){
 		$idDocente = $_POST['id_docente'];
 		$nombreSalon = $_POST['nombre_salon'];
+		$fecha = $_POST['fecha'];
 		$inicio = $_POST['hora_inicio'];
 		$fin = $_POST['hora_fin'];
 		$nomDocente = $_POST['nombre_docente'];
 		$apeDocente = $_POST['apellido_docente'];
+		$motivo = $_POST['motivo'];
+		$observ = $_POST['observaciones'];
 
 		$objeto = new modelo();
-		$objeto->insertarApartado($idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente);
+		$objeto->insertarApartado($idDocente,$nombreSalon,$fecha,$inicio,$fin,$nomDocente,$apeDocente,$motivo,$observ);
 
 		$data["titulo"] = "Agregar Apartado";
 			
@@ -348,13 +351,16 @@ class Controlador{
 		$idSalon = $_POST['id_salon'];
 		$idDocente = $_POST['id_docente'];
 		$nombreSalon = $_POST['nombre_salon'];
+		$fecha = $_POST['fecha'];
 		$inicio = $_POST['hora_inicio'];
 		$fin = $_POST['hora_fin'];
 		$nomDocente = $_POST['nombre_docente'];
 		$apeDocente = $_POST['apellido_docente'];
+		$motivo = $_POST['motivo'];
+		$observ = $_POST['observaciones'];
 
 		$objeto = new modelo();
-		$objeto->modificarApartado($id,$idSalon,$idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente);
+		$objeto->modificarApartado($id,$idSalon,$idDocente,$nombreSalon,$fecha,$inicio,$fin,$nomDocente,$apeDocente,$motivo,$observ);
 	}
 
 	//llamando función eliminar un proveedor

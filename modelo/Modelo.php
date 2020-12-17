@@ -266,12 +266,12 @@ class modelo{
 	}
 
 	//Inserta un docente
-	public function insertarApartado($idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente){
+	public function insertarApartado($idDocente,$nombreSalon,$fecha,$inicio,$fin,$nomDocente,$apeDocente,$motivo,$observ){
 		$sql2 = $this->db->query(" SELECT id FROM salones WHERE nombre_salon = '$nombreSalon' ");
 		$idSal = $sql2->fetch(PDO::FETCH_ASSOC);
 		$idSalon = $idSal['id'];
 
-		$sql = " INSERT INTO apartados (id_salon, id_docente, nombre_salon, hora_inicio, hora_fin, nombre_docente, apellido_docente) VALUES ( '$idSalon' , '$idDocente' , '$nombreSalon' , '$inicio' , '$fin' , '$nomDocente' , '$apeDocente' ) ";
+		$sql = " INSERT INTO apartados (id_salon, id_docente, nombre_salon, fecha, hora_inicio, hora_fin, nombre_docente, apellido_docente, motivo, observaciones) VALUES ( '$idSalon' , '$idDocente' , '$nombreSalon' , '$fecha' , '$inicio' , '$fin' , '$nomDocente' , '$apeDocente' , '$motivo' , '$observ' ) ";
 
 		$resultado = $this->db->query($sql);		
 			
@@ -280,8 +280,8 @@ class modelo{
 	}
 
 	//Modificar un docente
-	public function modificarApartado($id,$idSalon,$idDocente,$nombreSalon,$inicio,$fin,$nomDocente,$apeDocente){
-		$sql = " UPDATE apartados SET id_salon = '$idSalon' , id_docente = '$idDocente' , nombre_salon = '$nombreSalon' , hora_inicio = '$inicio' , hora_fin = '$fin' ,  nombre_docente = '$nomDocente' , apellido_docente = '$apeDocente' WHERE id = '$id' ";
+	public function modificarApartado($id,$idSalon,$idDocente,$nombreSalon,$fecha,$inicio,$fin,$nomDocente,$apeDocente,$motivo,$observ){
+		$sql = " UPDATE apartados SET id_salon = '$idSalon' , id_docente = '$idDocente' , nombre_salon = '$nombreSalon' , fecha = '$fecha' , hora_inicio = '$inicio' , hora_fin = '$fin' ,  nombre_docente = '$nomDocente' , apellido_docente = '$apeDocente' , motivo = '$motivo' , observaciones = '$observ' WHERE id = '$id' ";
 
 		$resultado = $this->db->query($sql);		
 			

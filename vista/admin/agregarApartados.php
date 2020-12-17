@@ -41,6 +41,13 @@
 
         <div class="row my-2">
             <div class="col-3">
+                <label for="fecha">Fecha</label>
+                <input type="date" class="border border-secondary form-control" id="fecha" name="fecha" placeholder="Fecha" required>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-3">
                 <label for="hora_inicio">Hora Inicio</label>
                 <input type="time" class="border border-secondary form-control" name="hora_inicio" placeholder="Hora de Inicio" required>
              </div>
@@ -65,6 +72,19 @@
             </div>
         </div>
 
+        <div class="row my-2">
+            <div class="col-6">
+                <label for="motivo">Motivo</label>
+                <input type="text" class="border border-secondary form-control" id="motivo" name="motivo" placeholder="Motivo" required>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-6">
+                <label for="observaciones">Observaciones</label>
+                <textarea class="border border-secondary form-control" id="observaciones" name="observaciones" placeholder="Observaciones"></textarea>
+            </div>
+        </div>
 
 
     </fieldset>
@@ -80,7 +100,7 @@
 
 <script>
         $(document).ready(function(){
-            $("#registrarApartado").click(function(){ 
+            $("#registrarApartado").click(function(){
                  $("#frmRegApart").submit();
             });
         });

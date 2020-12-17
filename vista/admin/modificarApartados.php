@@ -36,6 +36,13 @@
                 <input type="text" name="id_docente" class="border border-secondary custom-select mr-sm-2" value="<?= $data['objeto']['id_docente']; ?>" onkeyup="buscarMaestro(event,this,this.value)" autofocus>
               </div>
         </div>
+        <div class="row my-2">
+            <div class="col-3">
+                <label for="fecha">Fecha</label>
+                <input type="date" class="border border-secondary form-control" id="fecha" name="fecha" placeholder="Fecha" value="<?= $data['objeto']['fecha']; ?>">
+            </div>
+        </div>
+
 
         <div class="row my-2">
             <div class="col-3">
@@ -60,7 +67,21 @@
             <div class="col-6">
                 <label for="apellido_docente">Apellidos</label>
                 <input type="text" class="border border-secondary form-control" name="apellido_docente" id="apellido_docente" value="<?= $data['objeto']['apellido_docente']; ?>">
+            </div>
         </div>
+
+        <div class="row my-2">
+            <div class="col-6">
+                <label for="motivo">Motivo</label>
+                <input type="text" class="border border-secondary form-control" id="motivo" name="motivo" placeholder="Motivo" value="<?= $data['objeto']['motivo']; ?>">
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-6">
+                <label for="observaciones">Observaciones</label>
+                <textarea class="border border-secondary form-control" id="observaciones" name="observaciones" placeholder="Observaciones" ><?= $data['objeto']['observaciones']; ?></textarea>
+            </div>
         </div>
 
 
