@@ -26,10 +26,11 @@
 	<a class="btn btn-danger mr-1 my-4" href="principal.php?c=controlador&a=nuevoApartado">Agregar</a>
 	<a class="btn btn-outline-success mr-1 my-4" href="principal.php">Regresar</a>
 
-	<table class="table table-striped">
+<div class="table-responsive">
+	<table class="table table-condensed table-striped">
 			<thead class="bg-primary">
 				<tr class="text-light">
-					<th class="text-center">Id Salón </th>
+					<th class="text-center">Id Salón</th>
 					<th class="text-center">Id Docente</th>
 					<th class="text-center">Salón</th>
 					<th class="text-center">Fecha</th>
@@ -71,6 +72,7 @@
 
 			</tbody>
 		</table>
+	</div>
 	</div>
 
 	

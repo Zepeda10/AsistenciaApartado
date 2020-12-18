@@ -18,61 +18,82 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Registrar Asistencia</title>
     <script src="jquery/jquery-3.5.1.js"></script>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="css/style-registro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="CierraSesion.php">Cerrar Sesión</a>
-
-	<form action="principal.php?c=controlador&a=guardarAsistencia" method="POST" id="frmRegAsis" name="frmRegAsis" accept-charset="utf-8">
-
-    <fieldset>
-        <legend>Asistencia</legend>
-         <input type="hidden" name="id" value="">
-        <label for="nombre">Id Docente</label>
-        <input type="text" id="id_docente" name="id_docente" placeholder="Id Docente" onkeyup="buscarMaestro(event,this,this.value)" autofocus>
-
-         <label for="codigo" id="resultado_error"></label>
-
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre" readonly="true">
-
-        <label for="apellidos">Apellidos</label>
-        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" readonly="true">
-
-        <label for="hora">Hora</label>
-        <input type="text" name="hora" value='<?php echo $hora; ?>' readonly="true">
-
-        <label for="tipo">Tipo</label>
-        <input type="text" id="tipo" name="tipo" placeholder="Tipo" readonly="true">
-
-        <label for="fecha">Fecha</label>
-        <input type="text" name="fecha" value='<?php echo $fecha; ?>' readonly="true">
-
-
-        <label for="grupo">Grupo</label>
-        <select name="grupo">
-            <?php
-               foreach ($data['objeto'] as $dato){
-                    echo "<option value='".$dato['nombre_grupo']."'>".$dato['nombre_grupo']."</option>";
-               }
-           ?>
-        </select>
-
-
-        <label for="salon">Salón</label>
-        <select name="salon">
-        	<?php
-               foreach ($data['objeto2'] as $dato){
-                    echo "<option value='".$dato['nombre_salon']."'>".$dato['nombre_salon']."</option>";
-               }
-           ?>
-        </select>  
-
-    </fieldset>
-
-    <button type="button" id="btnRegistrar">Registrar</button>
+    <div class="cerrar">
+        <a href="CierraSesion.php">Cerrar Sesión</a>
+    </div>
     
-</form>
+    <div class="contenedor">
+    	<form action="principal.php?c=controlador&a=guardarAsistencia" method="POST" id="frmRegAsis" name="frmRegAsis" class="form" accept-charset="utf-8">
+
+            <div class="form-header">
+                <h1 class="form-title">REGISTRO DE ASISTENCIA</h1>
+            </div>
+
+                 <input type="hidden" name="id" value="">
+                <label for="id_docente" class="form-label">Id Docente</label>
+                <input type="text" id="id_docente" class="form-input" name="id_docente" placeholder="Id Docente" onkeyup="buscarMaestro(event,this,this.value)" autofocus>
+                <label id="leyenda">Presione 'Enter' para visualizar nombre</label>
+                
+
+                 <label for="codigo" id="resultado_error"></label>
+
+
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" class="form-input" name="nombre" placeholder="Nombre" readonly="true">
+
+                <div class="ape">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input type="text" id="apellidos" class="form-input" name="apellidos" placeholder="Apellidos" readonly="true">
+                </div>
+
+                
+                <label for="grupo" class="form-label">Grupo</label>
+                <select name="grupo" id="grupo" class="form-input">
+                    <?php
+                       foreach ($data['objeto'] as $dato){
+                            echo "<option value='".$dato['nombre_grupo']."'>".$dato['nombre_grupo']."</option>";
+                       }
+                   ?>
+                </select>
+
+                <div class="salo">
+                    <label for="salon" class="form-label">Salón</label>
+                    <select name="salon" id="salon" class="form-input">
+                        <?php
+                           foreach ($data['objeto2'] as $dato){
+                                echo "<option value='".$dato['nombre_salon']."'>".$dato['nombre_salon']."</option>";
+                           }
+                       ?>
+                    </select>                     
+                </div>
+                
+
+                <label for="hora" class="form-label">Hora</label>
+                <input type="text" name="hora" id="hora" class="form-input" value='<?php echo $hora; ?>' readonly="true">
+
+                <div class ="fec">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="text" name="fecha" id="fecha" class="form-input" value='<?php echo $fecha; ?>' readonly="true">
+                    
+                </div>
+
+
+                <label for="tipo" class="form-label">Tipo</label>
+                <input type="text" id="tipo" class="form-input" name="tipo" readonly="true">
+
+                
+
+  
+
+            <button type="button" id="btnRegistrar">REGISTRAR</button>
+        
+        </form>
+    </div>
 
 <script>
         $(document).ready(function(){

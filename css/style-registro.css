@@ -1,0 +1,136 @@
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body{
+	background: url(../img/fondo1.jpg);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.contenedor .form .form-header .form-title{
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+	text-align: center;
+	color: #0A000E;
+	padding: 14px 0;
+}
+
+.contenedor .form .form-header .form-title span{
+	color: #fff;
+}
+
+.contenedor .form{
+	background: rgba(255, 255, 255,.6);
+	width: 90%;
+	max-width: 750px;
+	margin: auto;
+	padding: 5px 35px;
+	margin-top: 30px;
+	padding-bottom: 30px;
+	border-radius: 3px;
+}
+
+
+#nombre, #id_docente, #apellidos, #hora, #fecha, #grupo, #salon{
+	width: 310px;
+}
+
+.ape, .fec, .salo{
+	margin-top: -20px;
+	margin-right: 9px;
+	float: right;
+}
+
+
+.contenedor .form .form-label{
+	display: block;
+	color: #635191;
+	font-size: 16px;
+	font-family: 'Roboto', sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	position: relative;
+}
+
+#leyenda{
+	display: block;
+	position: fixed;
+	margin-top: -19px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	color: #353434;
+}
+
+.contenedor .form .form-input{
+	background: rgba(125, 124, 111, .4);
+	border-radius: 8px;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #635191;
+	width: 100%;
+	padding: 12px;
+	margin-bottom: 20px;	
+	font-size: 16px;
+	color: #0A000E;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
+#btnRegistrar{
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	outline: none;
+	background: #280245;
+	font-size: 16px;
+	border-radius: 3px;
+	border: none;
+	color: #fff;
+	padding: 15px 0;
+	transition: all .5s ease;
+}
+
+
+#btnRegistrar:hover{
+	background: #635191;
+    cursor: pointer;
+}
+
+.cerrar{
+	background: rgba(255, 255, 255,.6);
+	height: 50px;
+}
+
+.cerrar a{
+	float: right;
+	padding: 15px;
+	margin-right: 90px; 
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+	text-decoration:none;
+	font-weight: normal;
+}
+
+.cerrar a:hover{
+	color: #635191;
+}
+
+#tipo{
+	color: #2F7604;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 25px;
+}
+
+#resultado_error{
+	font-family: 'Roboto', sans-serif;
+	color:#FC0404;
+	margin-left: 50px;
+}

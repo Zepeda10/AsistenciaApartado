@@ -17,10 +17,10 @@
 
             <input type="hidden" name="id" value="">
             <label for="apodo">Usuario</label>
-            <input type="text" name="apodo" placeholder="Nombre" required>
+            <input type="text" name="apodo" placeholder="Nombre" autocomplete="off" required>
 
             <label for="pass">Contraseña</label>
-            <input type="password" name="pass" placeholder="Contraseña" required>
+            <input type="password" name="pass" placeholder="Contraseña" autocomplete="off" required>
 
             <input class="#" type="submit" value="Ingresar" name="iniciarSesion">
         
