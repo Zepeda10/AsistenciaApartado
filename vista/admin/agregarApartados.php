@@ -31,7 +31,7 @@
 
             <div class="col-3">
                 <label for="id_docente">Id docente</label>
-                <input type="text" class="border border-secondary form-control" id="id_docente" name="id_docente" placeholder="Id Docente" onkeyup="buscarMaestro(event,this,this.value)" autofocus>
+                <input type="text" class="border border-secondary form-control" id="id_docente" name="id_docente" placeholder="Id Docente" onkeyup="buscarMaestro(event,this,this.value)" autofocus required>
             </div>
         </div>
 
@@ -61,14 +61,14 @@
         <div class="row my-2">
             <div class="col-6">
                 <label for="nombre_docente">Nombre</label>
-                <input type="text" class="border border-secondary form-control" id="nombre_docente" name="nombre_docente" placeholder="Nombre" required>
+                <input type="text" class="border border-secondary form-control" id="nombre_docente" name="nombre_docente" placeholder="Nombre" required readonly>
             </div>
         </div>
 
         <div class="row my-2">
             <div class="col-6">
                 <label for="apellido_docente">Apellidos</label>
-                <input type="text" class="border border-secondary form-control" id="apellido_docente" name="apellido_docente" placeholder="Apellidos" required>
+                <input type="text" class="border border-secondary form-control" id="apellido_docente" name="apellido_docente" placeholder="Apellidos" required readonly>
             </div>
         </div>
 

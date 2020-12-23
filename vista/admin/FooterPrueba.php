@@ -58,6 +58,7 @@
     <!-- Page level custom scripts -->
     <script src="estilos-admin/js/demo/chart-area-demo.js"></script>
     <script src="estilos-admin/js/demo/chart-pie-demo.js"></script>
+    <script src="jquery/confirmaEliminar.js"></script>
 
 </body>
 

@@ -61,6 +61,15 @@
 			</tbody>
 		</table>
 	</div>
+
+		<div id="paginacion">Pág...
+     	<?php 
+     		for($i=1; $i<=$data['pagina']; $i++){
+     			echo "<a href = '?c=controlador&a=muestraAsistencias&pagina=$i'>"." ".$i."</a>";
+     		}
+
+     	?>    	
+     </div>
 	
  <?php 
     require_once "FooterPrueba.php";

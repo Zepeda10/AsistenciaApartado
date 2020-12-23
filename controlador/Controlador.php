@@ -22,6 +22,7 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Docentes";
 		$data["objeto"] = $objeto->getDocentes();
+		$data["pagina"] = $objeto->getPaginacionDocentes();
 
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_docentes.php";
@@ -100,6 +101,7 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Grupos";
 		$data["objeto"] = $objeto->getGrupos();
+		$data["pagina"] = $objeto->getPaginacionGrupos();
 
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_grupos.php";
@@ -167,6 +169,7 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Salones";
 		$data["objeto"] = $objeto->getSalones();
+		$data["pagina"] = $objeto->getPaginacionSalones();
 
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_salon.php";
@@ -232,6 +235,7 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Usuarios";
 		$data["objeto"] = $objeto->getUsuarios();
+		$data["pagina"] = $objeto->getPaginacionUsuarios();
 
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_usuarios.php";
@@ -303,6 +307,8 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Apartar Aulas";
 		$data["objeto"] = $objeto->getApartados();
+		$data["pagina"] = $objeto->getPaginacionApartados();
+	
 		//mandando información del modelo a la vista
 		require_once "vista/admin/adm_apartados.php";
 	}
@@ -387,6 +393,7 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Asistencias";
 		$data["objeto"] = $objeto->getAsistencias();
+		$data["pagina"] = $objeto->getPaginacionAsistencias();
 
 		//mandando información del modelo a la vista
 		require_once "vista/admin/asistencias.php";
@@ -408,9 +415,10 @@ class Controlador{
 
 	public function muestraRegistros(){ //Muestra el formulario inicio del docente
 		$objeto = new modelo();
+		$objeto2 = new modelo();
 		$data["titulo"] = "Asistencias";
 		$data["objeto"] = $objeto->llenaGrupos();
-		$data["objeto2"] = $objeto->llenaSalones();
+		$data["objeto2"] = $objeto2->llenaSalones();
 		//mandando información del modelo a la vista
 		require_once "vista/registro.php";
 	}

@@ -45,7 +45,7 @@
 
 					echo "<td class='text-center'><a href='principal.php?c=controlador&a=editarSalon&id=".$dato['id']."' class='btn btn-success btn-sm'><i class='fas fa-marker'></i></a></td>";
 			
-					echo "<td class='text-center'><a href='principal.php?c=controlador&a=borraSalon&id=".$dato['id']."' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i> </a></td>";
+					echo "<td class='text-center'><a onclick = 'confirmarEliminar(event)' href='principal.php?c=controlador&a=borraSalon&id=".$dato['id']."' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i> </a></td>";
 					
 					echo "</tr>";
 				}
@@ -55,6 +55,15 @@
 			</tbody>
 		</table>
 	</div>
+
+	<div id="paginacion">Pág...
+     	<?php 
+     		for($i=1; $i<=$data['pagina']; $i++){
+     			echo "<a href = '?c=controlador&a=muestraSalones&pagina=$i'>"." ".$i."</a>";
+     		}
+
+     	?>    	
+     </div>
 	
  <?php 
  	require_once "FooterPrueba.php";

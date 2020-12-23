@@ -14,14 +14,82 @@ class modelo{
 
 	//muestra todos los docentes
 	public function getDocentes(){
-		$sql = " SELECT * FROM empleados ";
-		$resultado = $this->db->query($sql);
+		$filasPagina = 7;//registros mostrados por página
 
-		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-			$this->objeto[] = $row;//llenando array con valores de la consulta
-		}
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraDocentes");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM empleados ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM empleados LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
 		return $this->objeto;
 	}
+
+	//Paginación de docentes
+	public function getPaginacionDocentes(){
+
+			$filasPagina = 7;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraDocentes");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM empleados ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+
+		}
 
 	//Inserta un docente
 	public function insertarDocente($nombre,$apellidos,$email,$telefono,$entrada,$salida){
@@ -76,14 +144,84 @@ class modelo{
 
 	//muestra todos los grupos
 	public function getGrupos(){
-		$sql = " SELECT * FROM grupos ";
-		$resultado = $this->db->query($sql);
+		$filasPagina = 7;//registros mostrados por página
 
-		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-			$this->objeto[] = $row;//llenando array con valores de la consulta
-		}
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraGrupos");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM grupos ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM grupos LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
 		return $this->objeto;
 	}
+
+	//Paginación de asistencias
+	public function getPaginacionGrupos(){
+
+			$filasPagina = 10;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraGrupos");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM grupos ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+
+		}
+
+
 
 	public function modificarGrupo($id,$nombre){
 		$sql = " UPDATE grupos SET nombre_grupo = '$nombre' WHERE id = '$id' ";
@@ -135,14 +273,83 @@ class modelo{
 
 	//muestra todos los salones
 	public function getSalones(){
-		$sql = " SELECT * FROM salones ";
-		$resultado = $this->db->query($sql);
+		$filasPagina = 7;//registros mostrados por página
 
-		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-			$this->objeto[] = $row;//llenando array con valores de la consulta
-		}
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraSalones");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM salones ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM salones LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
 		return $this->objeto;
 	}
+
+	//Paginación de asistencias
+	public function getPaginacionSalones(){
+
+			$filasPagina = 7;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraSalones");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM salones ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+
+		}
+
 
 	public function modificarSalon($id,$nombre){
 		$sql = " UPDATE salones SET nombre_salon = '$nombre' WHERE id = '$id' ";
@@ -195,14 +402,81 @@ class modelo{
 
 	//muestra todos los docentes
 	public function getUsuarios(){
-		$sql = " SELECT * FROM usuarios ";
-		$resultado = $this->db->query($sql);
+		$filasPagina = 7;//registros mostrados por página
 
-		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-			$this->objeto[] = $row;//llenando array con valores de la consulta
-		}
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraUsuarios");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM usuarios ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM usuarios LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
 		return $this->objeto;
 	}
+
+	//Paginación de usuarios
+	public function getPaginacionUsuarios(){
+
+			$filasPagina = 7;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraUsuarios");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM usuarios ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+		}
 
 	//Inserta un docente
 	public function insertarUsuario($tipo,$apodo,$pass){
@@ -256,14 +530,83 @@ class modelo{
 
 	//muestra todos los docentes
 	public function getApartados(){
-		$sql = " SELECT * FROM apartados ";
-		$resultado = $this->db->query($sql);
 
-		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-			$this->objeto[] = $row;//llenando array con valores de la consulta
-		}
+		$filasPagina = 7;//registros mostrados por página
+
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraApartados");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM apartados ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM apartados LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
 		return $this->objeto;
 	}
+
+	//Paginación de apartados
+	public function getPaginacionApartados(){
+
+			$filasPagina = 7;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraApartados");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM apartados ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+
+		}
 
 	//Inserta un docente
 	public function insertarApartado($idDocente,$nombreSalon,$fecha,$inicio,$fin,$nomDocente,$apeDocente,$motivo,$observ){
@@ -321,14 +664,83 @@ class modelo{
 
 	//muestra todas las asistencias
 	public function getAsistencias(){
-		$sql = " SELECT * FROM asistencia ";
-		$resultado = $this->db->query($sql);
+		$filasPagina = 10;//registros mostrados por página
 
-		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-			$this->objeto[] = $row;//llenando array con valores de la consulta
-		}
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraAsistencias");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM asistencia ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM asistencia LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
 		return $this->objeto;
 	}
+
+	//Paginación de asistencias
+	public function getPaginacionAsistencias(){
+
+			$filasPagina = 10;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraAsistencias");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM asistencia ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+
+		}
+
 
 	//Busca asistencias
 	public function buscarAsistencia($buscar){

@@ -21,6 +21,8 @@
     <link href="estilos-admin/css/sb-admin-2.min.css" rel="stylesheet">
      <script src="jquery/jquery-3.5.1.js"></script>
 
+    <link href="css/style-paginacion.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">

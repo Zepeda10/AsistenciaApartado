@@ -14,19 +14,22 @@
 		return $control;
 	}	
 
-	function cargarAccion($controlador,$accion,$id=null){
+function cargarAccion($controlador,$accion,$id=null,$pagina=null){
 
 		if(isset($accion) && method_exists($controlador,$accion)){
 			if($id==null){
 				$controlador->$accion();
+			}else if($pagina!=null){
+				$controlador->$accion($pagina);
 			}else{
 				$controlador->$accion($id);
-			}
+			}			
 			
 		}else{
 			$controlador->ACCION_PRINCIPAL();
 		}
 	}
+
 
  
 ?>

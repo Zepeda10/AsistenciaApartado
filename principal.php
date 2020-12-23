@@ -21,13 +21,18 @@
 	Valdando si existe el controlador y la acción en la URL, para hacerla dinámica, el controlador solo es uno, "VehiculosControlador", y las acciones son las que están en el controlador: index, nuevo, etc.
 	*/
 
-	if(isset($_GET['c'])){
+		if(isset($_GET['c'])){
 		$controlador = cargarControlador($_GET['c']);
 
 		if(isset($_GET['a'])){	
+
 			if(isset($_GET['id'])){
 				cargarAccion($controlador,$_GET['a'], $_GET['id']);
+
+			}else if(isset($_GET['pagina'])){
+				cargarAccion($controlador,$_GET['a'], $_GET['pagina']);
 			}else{
+
 				cargarAccion($controlador,$_GET['a']);		
 			}
 		}else{
