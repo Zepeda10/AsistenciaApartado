@@ -760,7 +760,26 @@ class modelo{
 	public function insertarAsistencia($idDocente,$nombre,$apellidos,$hora,$tipo,$fecha,$grupo,$salon){
 		$sql = " INSERT INTO asistencia (id_docente, nombre, apellidos, hora, tipo, fecha, grupo, salon) VALUES ('$idDocente' , '$nombre' , '$apellidos' , '$hora' , '$tipo' , '$fecha' , '$grupo' , '$salon' ) ";
 
-		$resultado = $this->db->query($sql);		
+		$resultado = $this->db->query($sql);
+
+		$sql2 = " SELECT hora_entrada FROM empleados WHERE id = '$idDocente' LIMIT 1 ";
+		$resultado2 = $this->db->query($sql2);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado2->fetch(PDO::FETCH_ASSOC);
+
+		//Conviertiendo hora de llegada establecida a segundos
+		$string = implode(":", $row);
+		$entrada = strtotime($string);
+
+		$llega = strtotime($hora); //Hora en la que llegó el empleado a segundos
+
+		$nombreCompleto = $nombre." ".$apellidos;
+
+
+		if($llega > $entrada){
+			$sql3 = "  INSERT INTO incidencias (nombre, hora_inicio, llego_tarde) VALUES ('$nombreCompleto' , '$hora' , 1) ";
+			$resultado3 = $this->db->query($sql3);	
+		}		
 			
 		header("Location: principal.php?c=controlador&a=muestraRegistros");
 			
@@ -907,8 +926,8 @@ class modelo{
 
 
 	//Modificar un docente
-	public function modificarIncidencia($id,$noClases,$observaciones){
-		$sql = " UPDATE incidencias SET no_clases = '$noClases' , observaciones = '$observaciones' WHERE id = '$id' ";
+	public function modificarIncidencia($id,$noAsistio,$salioAntes,$cambioAula,$noClases,$observaciones){
+		$sql = " UPDATE incidencias SET no_asistio = '$no_asistio' , salio_antes = '$salioAntes' , cambio_aula = '$cambioAula' , no_clases = '$noClases' , observaciones = '$observaciones' WHERE id = '$id' ";
 
 		$resultado = $this->db->query($sql);		
 			
@@ -943,10 +962,16 @@ class modelo{
 		return $this->objeto;
 	}
 
-	public function insertaIncidencia($retardo){
-		$sql = "  INSERT INTO inciedncias (llego_tarde) VALUES ('$retardo') ";
-		$resultado = $this->db->query($sql);	
+
+	public function agregaIncidencia($nombreCompleto,$inicio,$fin,$asistio,$antes,$aula,$clase,$obs){
+
+		$sql3 = "  INSERT INTO incidencias (nombre,hora_inicio,hora_fin,no_asistio,salio_antes,cambio_aula,no_clases,observaciones) VALUES ('$nombreCompleto' , '$inicio' , '$fin' , '$asistio' , '$antes' , '$aula' , '$clase' , '$obs') ";
+			$resultado3 = $this->db->query($sql3);
+
+		header("Location: principal.php?c=controlador&a=muestraIncidencias");
 	}
+
+
 
 
 

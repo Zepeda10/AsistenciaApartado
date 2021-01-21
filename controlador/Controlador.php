@@ -410,7 +410,7 @@ class Controlador{
 	}
 
 	/* --------------- MODELO Y VISTA DE ASISTENCIAS (DOCENTES) ----------------- */
-
+ 
 	public function muestraRegistros(){ //Muestra el formulario inicio del docente
 		$objeto = new modelo();
 		$objeto2 = new modelo();
@@ -473,10 +473,13 @@ class Controlador{
 	public function actualizaIncidencia(){
 		$id = $_POST['id'];
 		$noClases = $_POST['no_clases'];
+		$noAsistio =  $_POST['no_asistio'];
+		$salioAntes =  $_POST['salio_antes'];
+		$cambioAula =  $_POST['cambio_aula'];
 		$observaciones = $_POST['observaciones'];
 
 		$objeto = new modelo();
-		$objeto->modificarIncidencia($id,$noClases,$observaciones);
+		$objeto->modificarIncidencia($id,$noAsistio,$salioAntes,$cambioAula,$noClases,$observaciones);
 	}
 
 	//llamando función eliminar un proveedor
@@ -502,6 +505,61 @@ class Controlador{
 		$objeto = new modelo();
 		$data["titulo"] = "Reporte de Incidencias";
 		require_once "vista/admin/reporteIncidencia.php";
+	}
+
+
+	public function guardarIncidencia(){
+		$nombreCompleto = $_POST['nombre'];
+		$inicio = $_POST['hora_inicio'];
+		$fin = $_POST['hora_fin'];
+		$asistio = $_POST['no_asistio'];
+		$antes = $_POST['salio_antes'];
+		$aula = $_POST['cambio_aula'];
+		$clase = $_POST['no_clases'];
+		$obs = $_POST['observaciones'];
+
+		if(isset($asistio) == '1'){
+			$asistio = 1;
+		}else{
+			$asistio = 0;
+		}
+
+		if(isset($antes) == '1'){
+			$antes = 1;
+		}else{
+			$antes = 0;
+		}
+
+		if(isset($asistio) == '1'){
+			$asistio = 1;
+		}else{
+			$asistio = 0;
+		}
+
+		if(isset($aula) == '1'){
+			$aula = 1;
+		}else{
+			$aula = 0;
+		}
+
+		if(isset($clase) == '1'){
+			$clase = 1;
+		}else if(!isset($clase) == '1'){
+			$clase = 0;
+		}
+
+
+		$objeto = new modelo();
+		$objeto->agregaIncidencia($nombreCompleto,$inicio,$fin,$asistio,$antes,$aula,$clase,$obs);
+
+		$data["titulo"] = "Agregar Incidencia";
+	}
+
+
+	public function nuevaIncidencia(){
+		$objeto = new modelo();
+		$data["titulo"] = "Agregar Incidencia";
+		require_once "vista/admin/agregarIncidencia.php";
 	}
 
 

@@ -24,6 +24,7 @@
 	</form>
 
 	<a class="btn btn-danger mr-1 my-4" href="principal.php?c=controlador&a=muestraReporte" target="_blank">Generar Reporte</a>
+	<a class="btn btn-danger mr-1 my-4" href="principal.php?c=controlador&a=nuevaIncidencia" target="_blank">Agregar</a>
 	<a class="btn btn-outline-success mr-1 my-4" href="principal.php">Regresar</a>
 
 <div class="table-responsive">
@@ -36,6 +37,7 @@
 					<th class="text-center">Hora Fin</th>
 					<th class="text-center">No asistió</th>
 					<th class="text-center">Llegó tarde</th>
+					<th class="text-center">Salió antes</th>
 					<th class="text-center">Cambio de aula</th>
 					<th class="text-center">No dio clases</th>
 					<th class="text-center">Observaciones</th>
@@ -54,6 +56,7 @@
 					echo "<td>".$dato['hora_fin']."</td>";
 					echo "<td>".$dato['no_asistio']."</td>";
 					echo "<td>".$dato['llego_tarde']."</td>";
+					echo "<td>".$dato['salio_antes']."</td>";
 					echo "<td>".$dato['cambio_aula']."</td>";
 					echo "<td>".$dato['no_clases']."</td>";
 					echo "<td>".$dato['observaciones']."</td>";
