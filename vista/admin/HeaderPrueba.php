@@ -125,6 +125,12 @@
                     <span>Asistencias</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="principal.php?c=controlador&a=muestraIncidencias">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Incidencias</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

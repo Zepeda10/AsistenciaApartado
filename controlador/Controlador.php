@@ -409,8 +409,6 @@ class Controlador{
 		require_once "vista/admin/asistencias.php";
 	}
 
-
-
 	/* --------------- MODELO Y VISTA DE ASISTENCIAS (DOCENTES) ----------------- */
 
 	public function muestraRegistros(){ //Muestra el formulario inicio del docente
@@ -446,6 +444,65 @@ class Controlador{
 		$objeto->getNombreDocente($id);
 	}
 
+
+
+
+	/* --------------- MODELO Y VISTA DE INCIDENCIAS ----------------- */
+
+	public function muestraIncidencias(){ //Muestra el formulario inicio de la incidencia
+		$objeto = new modelo();
+		$data["titulo"] = "Incidencias";
+		$data["objeto"] = $objeto->getIncidencias();
+		$data["pagina"] = $objeto->getPaginacionIncidencias();
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_incidencias.php";
+	}
+
+
+	//Mostrando vista para modificar incidencia
+	public function editarIncicendia($id){
+		$objeto = new modelo();
+		$data["id"] = $id;
+		$data["titulo"] = "Modificar Incidencia";
+		$data["objeto"] = $objeto->getIncidencia($id); //llamando método que muestra un producto en el formulario
+		require_once "vista/admin/modificarIncidencia.php";
+
+	}
+
+	//Llamándo método para actualizar proveedor
+	public function actualizaIncidencia(){
+		$id = $_POST['id'];
+		$noClases = $_POST['no_clases'];
+		$observaciones = $_POST['observaciones'];
+
+		$objeto = new modelo();
+		$objeto->modificarIncidencia($id,$noClases,$observaciones);
+	}
+
+	//llamando función eliminar un proveedor
+	public function borraIncidencia($id){
+		$objeto = new modelo();
+		$objeto->eliminarIncidencia($id);
+		header("Location: principal.php?c=controlador&a=muestraIncidencias");
+
+	}
+
+	//Llamando método para buscar proveedor
+	public function buscaIncidencia(){
+		$buscar = $_POST['buscarIncidencia'];
+		$productos = new modelo();
+		$data["objeto"] = $productos->buscarIncidencia($buscar);
+
+		//mandando información del modelo a la vista
+		require_once "vista/admin/adm_incidencias.php";
+	}
+
+
+	public function muestraReporte(){ //Muestra el formulario inicio de la incidencia
+		$objeto = new modelo();
+		$data["titulo"] = "Reporte de Incidencias";
+		require_once "vista/admin/reporteIncidencia.php";
+	}
 
 
 

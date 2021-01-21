@@ -12,7 +12,7 @@
 
  	<div class="container">
  			<h2>Bienvenido (a), <?= $_SESSION['user']; ?> </h2>
- 		<h2>Esta es la página principal de todos los usuarios (ADMIN), solo es una prueba</h2>
+ 		<h2></h2>
  		<!--
 		<a href="principal.php?c=controlador&a=muestraDocentes">Docentes</a>
 		<a href="principal.php?c=controlador&a=muestraGrupos">Grupos</a>

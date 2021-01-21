@@ -738,7 +738,6 @@ class modelo{
 
 			return $totalPaginas;
 
-
 		}
 
 
@@ -823,6 +822,131 @@ class modelo{
 		echo json_encode($res);
 	}
 
+
+
+	/* --------------- OPERACIONES CON INCIDENCIAS ----------------- */
+
+	//muestra todos los docentes
+	public function getIncidencias(){
+		$filasPagina = 7;//registros mostrados por página
+
+		if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1; 
+				header("Location: principal.php?c=controlador&a=muestraIncidencias");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM incidencias ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+		//------------------------- Consulta para mostrar los resultados ---------------------------
+
+			$sql_limite = " SELECT * FROM incidencias LIMIT $empezarDesde , $filasPagina ";
+
+			$resultado = $this->db->query($sql_limite);//ejecutando la consulta con la conexión establecida
+
+			while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+				$this->objeto[] = $row;//llenando array con valores de la consulta
+			}
+
+		return $this->objeto;
+	}
+
+	//Paginación de docentes
+	public function getPaginacionIncidencias(){
+
+			$filasPagina = 7;//registros mostrados por página
+
+			if(isset($_GET['pagina'])){//si le pasamos el valor "pagina" de la url (si el usuario da click en la paginación)
+				if($_GET['pagina']==1){
+				$pagina=1;
+				header("Location: principal.php?c=controlador&a=muestraIncidencias");
+				}else{
+					$pagina=$_GET['pagina'];//índice que indica página actual
+				}
+			}else{
+				$pagina=1;//índice que indica página actual
+			}
+
+			$empezarDesde = ($pagina-1) * $filasPagina;
+
+			$sql = " SELECT * FROM incidencias ";
+
+			$resultado = $this->db->query($sql);
+
+			$resultado->execute(array());
+
+			$numFilas = $resultado->rowCount();//número de registos totales de la consulta
+
+			//ceil — Redondear fracciones hacia arriba
+			$totalPaginas = ceil($numFilas / $filasPagina);//calcula cuántas páginas serán en total para mostrar todos los registros
+
+			$resultado->closeCursor();
+
+			return $totalPaginas;
+
+
+		}
+
+
+	//Modificar un docente
+	public function modificarIncidencia($id,$noClases,$observaciones){
+		$sql = " UPDATE incidencias SET no_clases = '$noClases' , observaciones = '$observaciones' WHERE id = '$id' ";
+
+		$resultado = $this->db->query($sql);		
+			
+		header("Location: principal.php?c=controlador&a=muestraIncidencias");
+	}
+
+	//mostrando un proveedor en la vista "modificarDocente", para actualizar los datos
+	public function getIncidencia($id){
+		$sql = " SELECT * FROM incidencias WHERE id = '$id' LIMIT 1 ";
+		$resultado = $this->db->query($sql);//ejecutando la consulta con la conexión establecida
+
+		$row = $resultado->fetch(PDO::FETCH_ASSOC);
+				
+		return $row;
+
+	}
+
+	//Eliminar un docente
+	public function eliminarIncidencia($id){
+		$resultado = $this->db->query(" DELETE FROM incidencias WHERE id = '$id' ");
+	}
+
+	//Busca un docente
+	public function buscarIncidencia($buscar){
+		$sql = " SELECT * FROM incidencias WHERE id LIKE '%".$buscar."%' OR nombre LIKE UPPER('%".$buscar."%') ";
+		$resultado = $this->db->query($sql);
+
+		while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
+			$this->objeto[] = $row;//llenando array con valores de la consulta
+		}
+
+		return $this->objeto;
+	}
+
+	public function insertaIncidencia($retardo){
+		$sql = "  INSERT INTO inciedncias (llego_tarde) VALUES ('$retardo') ";
+		$resultado = $this->db->query($sql);	
+	}
 
 
 
