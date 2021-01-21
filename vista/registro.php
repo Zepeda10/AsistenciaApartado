@@ -7,7 +7,7 @@
 ?>
 
 <?php 
-    date_default_timezone_set('America/Mexico_City'); // por ejemplo por poner algo
+    date_default_timezone_set('America/Mexico_City'); 
     $fecha = Date("Y-m-d");
     $hora = Date("H:i:s");
 ?>

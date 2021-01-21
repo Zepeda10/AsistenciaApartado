@@ -10,9 +10,24 @@
 	require_once("db/conexion.php");
 	require('FPDF/fpdf.php');
 
+	
+	//$GLOBALS['prefecto'] = $_POST["nombrePre"];
+
+
+
 	class PDF extends FPDF{
 		// Cabecera de página
 		function Header(){
+			date_default_timezone_set('America/Mexico_City'); 
+			$str = date('d-m-Y');
+			global $prefecto;
+			global $turno;
+			global $fecha;
+			$prefecto =  strtoupper($_POST["nombrePre"]);
+			$turno =  strtoupper($_POST["turno"]);
+			$fecha = date("d/m/Y", strtotime($str));
+
+
 		    // Logo
 		    $this->Image('img/SEP.png',10,8,33);
 		    $this->Image('img/SEMS.png',50,8,33);
@@ -29,16 +44,22 @@
 		    $this->Cell(49,10);
 		    $this->Cell(0,10,utf8_decode('"Ignacio Zaragoza"'));
 		    $this->Ln(1);
-		     $this->Cell(254,10);
+		    $this->Cell(254,10);
 		    $this->Cell(0,19,utf8_decode('C.C.T.20DCT005Q'));
 		    // Salto de línea
 		    $this->Ln(20);
-
 			$this->SetFont('Arial','',10);
 
+			$this->Cell(40,10);
+			$this->Cell(0,0,utf8_decode($prefecto),0, 1);
+
 			$this->Cell(14,0,utf8_decode('Nombre del Prefecto:    _____________________________________'));
-			$this->Cell(108,10);
+			$this->Cell(129,10);
+			$this->Cell(0,0,utf8_decode($turno),0, 1);
+			$this->Cell(125,10);
 			$this->Cell(0,0,utf8_decode('Turno:    ______________'));
+			$this->Cell(-73,10);
+			$this->Cell(0,0,utf8_decode($fecha),0, 0);
 			$this->Cell(-100,10);
 			$this->Cell(0,0,utf8_decode('Fecha:    _______________________'));
 			$this->Cell(-80,10);
@@ -87,15 +108,16 @@
 
 	while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
 		$pdf->Cell(10, 10, $row['id'], 1, 0, 'C', 0);
-		$pdf->Cell(65, 10, $row['nombre'], 1, 0, 'C', 0);
+		$pdf->Cell(65, 10, utf8_decode($row['nombre']), 1, 0, 'C', 0);
 		$pdf->Cell(25, 10, $row['hora_inicio'], 1, 0, 'C', 0);
 		$pdf->Cell(25, 10, $row['hora_fin'], 1, 0, 'C', 0);
 		$pdf->Cell(25, 10, $row['no_asistio'], 1, 0, 'C', 0);
 		$pdf->Cell(25, 10, $row['llego_tarde'], 1, 0, 'C', 0);
 		$pdf->Cell(28, 10, $row['cambio_aula'], 1, 0, 'C', 0);
 		$pdf->Cell(25, 10, $row['no_clases'], 1, 0, 'C', 0);
-		$pdf->Cell(49, 10, $row['observaciones'], 1, 1, 'C', 0);
+		$pdf->Cell(49, 10, utf8_decode($row['observaciones']), 1, 1, 'C', 0);
 	}
 
+	ob_end_clean();
 	$pdf->output();
 ?>
