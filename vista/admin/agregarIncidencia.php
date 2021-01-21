@@ -65,7 +65,7 @@
                     <div class="row my-2">
             <div class="col-6">
                 <label for="observaciones">Observaciones</label>
-                <textarea class="border border-secondary form-control" id="observaciones" name="observaciones" placeholder="Observaciones"></textarea>
+                <textarea class="border border-secondary form-control" id="observaciones" name="observaciones" placeholder="Hasta 200 caracteres"></textarea>
             </div>
         </div>
         </div>

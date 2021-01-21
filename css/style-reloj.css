@@ -1,0 +1,41 @@
+/* Estilos de nuestro Reloj Digital ITechNode */
+
+@font-face {
+    font-family: 'digi';
+    src: url('../fonts/DS-DIGII.TTF');
+    /*src: url('http://cssdeck.com/uploads/resources/fonts/digii/DS-DIGII.TTF*/
+}
+
+@font-face {
+    font-family: 'Double_Bubble_shadow';
+    src: url('../fonts/Double_Bubble_shadow.otf');
+}
+
+@font-face {
+    font-family: "Sketch Gothic School";
+    src: url("../fonts/Sketch Gothic School.ttf");
+}
+
+
+
+
+
+#clock {
+    font-family: 'digi','Sans Serif';
+    font-size: 120px;
+    width: 600px;
+    position: absolute;
+
+    width: 550px; height: 150px;
+
+    /* Centrar nuestro reloj*/
+    left: 49%; top: 42%;
+    margin-left: -125px; margin-top: -50px;
+
+    text-align: center;
+    line-height: 100px;
+
+
+
+}
+

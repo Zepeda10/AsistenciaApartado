@@ -36,6 +36,7 @@
 					<th class="text-center">Fecha</th>
 					<th class="text-center">Grupo</th>
 					<th class="text-center">Salon</th>
+					<th class="text-center">Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -51,7 +52,10 @@
 					echo "<td>".$dato['tipo']."</td>";
 					echo "<td>".$dato['fecha']."</td>";
 					echo "<td>".$dato['grupo']."</td>";
-					echo "<td>".$dato['salon']."</td>";				
+					echo "<td>".$dato['salon']."</td>";	
+
+					echo "<td class='text-center'><a onclick = 'confirmarEliminar(event)' href='principal.php?c=controlador&a=borraAsistencia&id=".$dato['id']."' class='btn btn-danger btn-sm'><i class='far fa-trash-alt'></i></a></td>";
+
 					echo "</tr>";
 				}
 

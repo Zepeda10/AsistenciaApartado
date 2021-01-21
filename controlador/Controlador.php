@@ -562,6 +562,12 @@ class Controlador{
 		require_once "vista/admin/agregarIncidencia.php";
 	}
 
+	public function borraAsistencia($id){
+		$objeto = new modelo();
+		$objeto->eliminarAsistencia($id);
+		header("Location: principal.php?c=controlador&a=muestraAsistencias");
+
+	}
 
 
 

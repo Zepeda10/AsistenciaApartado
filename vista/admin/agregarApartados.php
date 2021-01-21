@@ -31,7 +31,7 @@
 
             <div class="col-3">
                 <label for="id_docente">Id docente</label>
-                <input type="text" class="border border-secondary form-control" id="id_docente" name="id_docente" placeholder="Id Docente" onkeyup="buscarMaestro(event,this,this.value)" autofocus required>
+                <input type="text" class="border border-secondary form-control" id="id_docente" name="id_docente" placeholder="Ingrese ID y presione 'enter'" onkeyup="buscarMaestro(event,this,this.value)" autofocus required>
             </div>
         </div>
 
@@ -82,7 +82,7 @@
         <div class="row my-2">
             <div class="col-6">
                 <label for="observaciones">Observaciones</label>
-                <textarea class="border border-secondary form-control" id="observaciones" name="observaciones" placeholder="Observaciones"></textarea>
+                <textarea class="border border-secondary form-control" id="observaciones" name="observaciones" placeholder="Hasta 150 caracteres"></textarea>
             </div>
         </div>
 

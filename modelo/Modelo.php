@@ -971,6 +971,10 @@ class modelo{
 		header("Location: principal.php?c=controlador&a=muestraIncidencias");
 	}
 
+	public function eliminarAsistencia($id){
+		$resultado = $this->db->query(" DELETE FROM asistencia WHERE id = '$id' ");
+	}
+
 
 
 

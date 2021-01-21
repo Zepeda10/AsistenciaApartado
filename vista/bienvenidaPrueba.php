@@ -10,18 +10,19 @@
  	require_once "admin/HeaderPrueba.php";
  ?>
 
+      <!--Agregamos nuestro archivo externo de estilos -->
+    <link rel="stylesheet" href="css/style-reloj.css">
+
+    <!--Agregamos archivo JQuery -->
+    <script type="text/javascript" src="jquery/jquery.min.js"> </script>
+
+    <!--Agregamos nuestro archivo con la funcion del reloj -->
+     <script type="text/javascript" src="jquery/clock.js"></script>
+
+
  	<div class="container">
- 			<h2>Bienvenido (a), <?= $_SESSION['user']; ?> </h2>
- 		<h2></h2>
- 		<!--
-		<a href="principal.php?c=controlador&a=muestraDocentes">Docentes</a>
-		<a href="principal.php?c=controlador&a=muestraGrupos">Grupos</a>
-		<a href="principal.php?c=controlador&a=muestraSalones">Salones</a>
-		<a href="principal.php?c=controlador&a=muestraUsuarios">Usuarios</a>
-		<a href="principal.php?c=controlador&a=muestraApartados">Apartados</a>
-		<a href="principal.php?c=controlador&a=muestraAsistencias">Asistencias</a>
-		<a href="CierraSesion.php">Cerrar Sesión</a>
-	-->
+ 		<h2>Bienvenido (a), <?= $_SESSION['user']; ?> </h2>
+ 		<div id="clock"></div>
  		
  	</div>
 
