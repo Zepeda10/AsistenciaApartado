@@ -31,7 +31,8 @@
 
             <div class="col-3">
                 <label for="id_docente">Id docente</label>
-                <input type="text" class="border border-secondary form-control" id="id_docente" name="id_docente" placeholder="Ingrese ID y presione 'enter'" onkeyup="buscarMaestro(event,this,this.value)" autofocus required>
+                <input type="text" class="border border-secondary form-control" id="id_docente" name="id_docente" placeholder="Ingrese ID y presione 'enter'" onkeyup="buscarMaestro(event,this,this.value)" autofocus required> 
+                <label for="codigo" id="resultado_error" style="color: red"></label>
             </div>
         </div>
 
