@@ -37,7 +37,7 @@
 		    // Movernos a la derecha
 		    $this->Cell(120);
 		    // Título
-		    $this->Cell(30,10,'REPORTE DE INCIDENCIAS',0,0,'C');
+		    $this->Cell(30,10,'REPORTE DE APARTADOS',0,0,'C');
 		    $this->SetFont('Arial','',9);
 		    $this->Cell(40,20);
 		    $this->Cell(15,0,utf8_decode('Centro Bachillerato Tecnológico Industrial y de Servicios No. 107'));
@@ -85,7 +85,7 @@
 
 	//-----consulta para mostrar datos----
 	$db = Conectar::conexion();//almacenas la conexion
-	$sql = " SELECT * FROM incidencias ";
+	$sql = " SELECT * FROM apartados ";
 	$resultado = $db->query($sql);
 
 	$pdf = new PDF('L','mm','A4');
@@ -96,10 +96,10 @@
 
 
 	//Array de cabecera de tabla
-	$header = array('Id', 'Nombre', 'Hora Inicio', 'No asistió', 'Llegó tarde', 'Cambio de aula', 'No dio clases', 'Observaciones');
+	$header = array('Salón', 'Fecha', 'Hora Inicio', 'Hora Fin', 'Nombre','Apellidos', 'Motivo','Observaciones');
 
 	// Anchuras de las columnas
-    $w = array(10, 65,25, 25, 25, 28, 25, 49);
+    $w = array(25, 25,25, 25, 45, 45, 30, 49);
 
 	// Cabeceras de tabla
     for($i=0;$i<count($header);$i++)
@@ -107,13 +107,13 @@
     $pdf->Ln();
 
 	while($row = $resultado->fetch(PDO::FETCH_ASSOC)){
-		$pdf->Cell(10, 10, $row['id'], 1, 0, 'C', 0);
-		$pdf->Cell(65, 10, utf8_decode($row['nombre']), 1, 0, 'C', 0);
+		$pdf->Cell(25, 10, utf8_decode($row['nombre_salon']), 1, 0, 'C', 0);
+		$pdf->Cell(25, 10, $row['fecha'], 1, 0, 'C', 0);
 		$pdf->Cell(25, 10, $row['hora_inicio'], 1, 0, 'C', 0);
-		$pdf->Cell(25, 10, $row['no_asistio'], 1, 0, 'C', 0);
-		$pdf->Cell(25, 10, $row['llego_tarde'], 1, 0, 'C', 0);
-		$pdf->Cell(28, 10, $row['cambio_aula'], 1, 0, 'C', 0);
-		$pdf->Cell(25, 10, $row['no_clases'], 1, 0, 'C', 0);
+		$pdf->Cell(25, 10, $row['hora_fin'], 1, 0, 'C', 0);
+		$pdf->Cell(45, 10, utf8_decode($row['nombre_docente']), 1, 0, 'C', 0);
+		$pdf->Cell(45, 10, utf8_decode($row['apellido_docente']), 1, 0, 'C', 0);
+		$pdf->Cell(30, 10, utf8_decode($row['motivo']), 1, 0, 'C', 0);
 		$pdf->Cell(49, 10, utf8_decode($row['observaciones']), 1, 1, 'C', 0);
 	}
 

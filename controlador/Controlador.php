@@ -570,6 +570,12 @@ class Controlador{
 	}
 
 
+	public function muestraReporteApartados(){ //Muestra el formulario inicio del apartado
+		$objeto = new modelo();
+		$data["titulo"] = "Reporte de Apartados";
+		require_once "vista/admin/reporteApartado.php";
+	}
+
 
 
 }

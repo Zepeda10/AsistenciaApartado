@@ -23,8 +23,24 @@
 		
 	</form>
 
-	<a class="btn btn-danger mr-1 my-4" href="principal.php?c=controlador&a=nuevoApartado">Agregar</a>
-	<a class="btn btn-outline-success mr-1 my-4" href="principal.php">Regresar</a>
+	<form action="principal.php?c=controlador&a=muestraReporteApartados" method="POST" accept-charset="utf-8">
+		<div class="row ml-1">
+			<input class="btn btn-danger mr-1 my-4" type="submit" value="Generar Reporte">
+			<div class="col-3 mt-4">
+				<input type="text" class="border border-secondary form-control" id="nombrePre" name="nombrePre" placeholder="Nombre Prefecto">
+			</div>	
+
+			<div class="col-2 mt-4">
+				<input type="text" class="border border-secondary form-control" id="turno" name="turno" placeholder="Turno">
+			</div>
+
+			<a class="btn btn-danger mr-1 my-4" href="principal.php?c=controlador&a=nuevoApartado">Agregar</a>
+			<a class="btn btn-outline-success mr-1 my-4" href="principal.php">Regresar</a>
+		</div>
+
+	</form>
+
+
 
 <div class="table-responsive">
 	<table class="table table-condensed table-striped">

@@ -48,7 +48,6 @@
 					<th class="text-center">No.</th>
 					<th class="text-center">Nombre</th>
 					<th class="text-center">Hora Inicio</th>
-					<th class="text-center">Hora Fin</th>
 					<th class="text-center">No asistió</th>
 					<th class="text-center">Llegó tarde</th>
 					<th class="text-center">Salió antes</th>
@@ -67,7 +66,6 @@
 					echo "<td>".$dato['id']."</td>";
 					echo "<td>".$dato['nombre']."</td>";
 					echo "<td>".$dato['hora_inicio']."</td>";
-					echo "<td>".$dato['hora_fin']."</td>";
 					echo "<td>".$dato['no_asistio']."</td>";
 					echo "<td>".$dato['llego_tarde']."</td>";
 					echo "<td>".$dato['salio_antes']."</td>";
